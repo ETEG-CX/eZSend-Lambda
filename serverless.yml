@@ -1,0 +1,36 @@
+# https://console.aws.amazon.com/iam/home#/users
+# serverless deploy --aws-profile oxitec
+# aws configure --profile oxitec
+
+service: ezsend-[Inserir nome do cliente]-lambda-middleware
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: prod
+  region: sa-east-1
+
+plugins:
+  - serverless-offline
+functions:
+  ezsend:
+    handler: handler.handler
+    events:
+      - http:
+          path: /
+          method: any
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: any
+          cors: true
+
+    environment:
+      ENV: prod
+      CONFIG_API_SECRET: "[Inserir App Secret]"
+      CONFIG_API_ID: "[Inserir App Id]"
+      CONFIG_FIELD_ID_REQUESTER: "[Inserir Id de Campo de solicitante]"
+      CONFIG_WEBHOOK_SECRET: "[Inserir Webhook Secret]"
+      CONFIG_FIELD_ID_SUBJECT: "[Inserir Id de Campo de titulo]"

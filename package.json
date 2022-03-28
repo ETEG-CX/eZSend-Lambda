@@ -1,0 +1,24 @@
+{
+  "name": "lambda-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "start": "nodemon handler.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rodolfo Augusto <rodolfo.oliveira@eteg.com.br>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "axios": "^0.21.1",
+    "base-64": "^1.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "serverless-offline": "^8.3.0"
+  }
+}
